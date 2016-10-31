@@ -1,5 +1,5 @@
 /*
- * Decompiled with CFR 0_118.
+ * Decompiled with CFR 0_115.
  */
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -13,78 +13,88 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public class ShapeFactory {
-/** Класс служит для создания фигур
- * <b>shape</b> и <b>width</b> и <b>shape_type</b>.
- * @author Pavel
- * @version 1.0
-*/
-/** Свойство - фигура*/
     public Shape shape;
-/** Свойство - толщина границы*/
     public BasicStroke stroke = new BasicStroke(3.0f);
     public Paint paint;
-/** Свойство - ширина фигуры*/
     public int width = 25;
-/** Свойство - длина фигуры*/
     public int height = 25;
 
-/** Конструктор - принимает магическое число и делит его на разряды*/
-    public ShapeFactory(int shape_type) {
-        switch (shape_type / 10) {
-            case 1: {
-                this.shape = ShapeFactory.createStar(3, new Point(0, 0), (double)this.width / 2.0, (double)this.width / 2.0);
-                break;
-            }
-            case 3: {
-                this.shape = ShapeFactory.createStar(5, new Point(0, 0), (double)this.width / 2.0, (double)this.width / 4.0);
-                break;
-            }
-            case 5: {
-                this.shape = new Rectangle2D.Double((double)(- this.width) / 2.0, (double)(- this.height) / 2.0, this.width, this.height);
-                break;
-            }
-            case 7: {
-                GeneralPath path = new GeneralPath();
-                double tmp_height = Math.sqrt(2.0) / 2.0 * (double)this.height;
-                path.moveTo((double)((- this.width) / 2), - tmp_height);
-                path.lineTo(0.0, - tmp_height);
-                path.lineTo((double)(this.width / 2), tmp_height);
-                path.closePath();
-                this.shape = path;
-                break;
-            }
-            case 9: {
-                this.shape = new Arc2D.Double((double)(- this.width) / 2.0, (double)(- this.height) / 2.0, this.width, this.height, 30.0, 300.0, 2);
-                break;
-            }
-            default: {
-                throw new Error("type is nusupported");
-            }
-        }
-        switch (shape_type % 10) {
-            case 1: {
-                this.stroke = new BasicStroke(3.0f);
-                break;
-            }
-            case 3: {
-                break;
-            }
-            case 4: {
-                this.stroke = new BasicStroke(7.0f);
-                break;
-            }
-            case 7: {
-                this.paint = new GradientPaint(- this.width, - this.height, Color.white, this.width, this.height, Color.gray, true);
-                break;
-            }
-            case 8: {
-                this.paint = Color.red;
-                break;
-            }
-            default: {
-                throw new Error("type is nusupported");
-            }
-        }
+    public ShapeFactory(String TypeOfChoiseFigure, int BorderThickness) 
+    {
+    	this.stroke = new BasicStroke(BorderThickness);
+    	if (TypeOfChoiseFigure == "Hexagon")
+    	{
+    		this.shape = ShapeFactory.createStar(3, new Point(0, 0), (double)this.width / 2.0, (double)this.width / 2.0);
+    	}
+    	else if (TypeOfChoiseFigure == "Five-pointed_star") 
+    	{
+    		this.shape = ShapeFactory.createStar(5, new Point(0, 0), (double)this.width / 2.0, (double)this.width / 4.0);
+    	}
+    	else if (TypeOfChoiseFigure == "Rectangle") 
+    	{
+    		this.shape = new Rectangle2D.Double((double)(- this.width) / 2.0, (double)(- this.height) / 2.0, this.width, this.height);
+    	}
+    	else if (TypeOfChoiseFigure == "Triangle") 
+    	{
+    		GeneralPath path = new GeneralPath();
+            double tmp_height = Math.sqrt(2.0) / 2.0 * (double)this.height;
+            path.moveTo((double)((- this.width) / 2), - tmp_height);
+            path.lineTo(0.0, - tmp_height);
+            path.lineTo((double)(this.width / 2), tmp_height);
+            path.closePath();
+            this.shape = path;
+    	}
+    	else if (TypeOfChoiseFigure == "Arc") 
+    	{
+    		this.shape = new Arc2D.Double((double)(- this.width) / 2.0, (double)(- this.height) / 2.0, this.width, this.height, 30.0, 300.0, 2);
+    	}
+    	else 
+    	{
+    		throw new Error("type is nusupported");
+    	}        
+    }
+    public ShapeFactory(String TypeOfChoiseFigure, int BorderThickness, boolean Gradient, boolean ColorRed) 
+    {
+    	this.stroke = new BasicStroke(BorderThickness);    	
+    	if (TypeOfChoiseFigure == "Hexagon")
+    	{
+    		this.shape = ShapeFactory.createStar(3, new Point(0, 0), (double)this.width / 2.0, (double)this.width / 2.0);
+    	}
+    	else if (TypeOfChoiseFigure == "Five-pointed_star") 
+    	{
+    		this.shape = ShapeFactory.createStar(5, new Point(0, 0), (double)this.width / 2.0, (double)this.width / 4.0);
+    	}
+    	else if (TypeOfChoiseFigure == "Rectangle") 
+    	{
+    		this.shape = new Rectangle2D.Double((double)(- this.width) / 2.0, (double)(- this.height) / 2.0, this.width, this.height);
+    	}
+    	else if (TypeOfChoiseFigure == "Triangle") 
+    	{
+    		GeneralPath path = new GeneralPath();
+            double tmp_height = Math.sqrt(2.0) / 2.0 * (double)this.height;
+            path.moveTo((double)((- this.width) / 2), - tmp_height);
+            path.lineTo(0.0, - tmp_height);
+            path.lineTo((double)(this.width / 2), tmp_height);
+            path.closePath();
+            this.shape = path;
+    	}
+    	else if (TypeOfChoiseFigure == "Arc") 
+    	{
+    		this.shape = new Arc2D.Double((double)(- this.width) / 2.0, (double)(- this.height) / 2.0, this.width, this.height, 30.0, 300.0, 2);
+    	}
+    	else 
+    	{
+    		throw new Error("type is nusupported");
+    	}
+       
+    	if (Gradient == true) 
+    	{
+    		this.paint = new GradientPaint(- this.width, - this.height, Color.white, this.width, this.height, Color.gray, true);
+    	}  	
+    	if (ColorRed == true) 
+    	{
+    		this.paint = Color.red;
+    	}   	   
     }
 
     private static Shape createStar(int arms, Point center, double rOuter, double rInner) {

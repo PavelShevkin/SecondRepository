@@ -1,17 +1,12 @@
 /*
- * Decompiled with CFR 0_118.
+ * Decompiled with CFR 0_115.
  */
 import java.awt.Component;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-/** Клас задает магическое число и параметры экрана
- * @author Pavel
- * @version 1.0
-*/
 public class TitlesFrame
 extends JFrame {
-/** Передает магическое число в TitlesFrame() */
     public TitlesFrame() {
         this.initUI();
     }
@@ -19,7 +14,7 @@ extends JFrame {
     private void initUI() {
         this.setTitle("\u041a\u0440\u0438\u0432\u044b\u0435 \u0444\u0438\u0433\u0443\u0440\u044b");
         this.setDefaultCloseOperation(3);
-        this.add(new TitlesPanel(31));
+        this.add(new TitlesPanel("Five-pointed_star", 5, false, true));
         this.setSize(350, 350);
         this.setLocationRelativeTo(null);
     }
