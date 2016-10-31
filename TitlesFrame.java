@@ -5,8 +5,13 @@ import java.awt.Component;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+/** Клас задает магическое число и параметры экрана
+ * @author Pavel
+ * @version 1.0
+*/
 public class TitlesFrame
 extends JFrame {
+/** Передает магическое число в TitlesFrame() */
     public TitlesFrame() {
         this.initUI();
     }

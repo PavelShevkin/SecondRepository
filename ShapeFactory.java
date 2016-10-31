@@ -13,12 +13,22 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public class ShapeFactory {
+/** Класс служит для создания фигур
+ * <b>shape</b> и <b>width</b> и <b>shape_type</b>.
+ * @author Pavel
+ * @version 1.0
+*/
+/** Свойство - фигура*/
     public Shape shape;
+/** Свойство - толщина границы*/
     public BasicStroke stroke = new BasicStroke(3.0f);
     public Paint paint;
+/** Свойство - ширина фигуры*/
     public int width = 25;
+/** Свойство - длина фигуры*/
     public int height = 25;
 
+/** Конструктор - принимает магическое число и делит его на разряды*/
     public ShapeFactory(int shape_type) {
         switch (shape_type / 10) {
             case 1: {

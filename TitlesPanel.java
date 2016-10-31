@@ -16,6 +16,10 @@ import java.awt.geom.AffineTransform;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+/** Класс отвечает за анимацию фигур для их рисования вызывает ShapeFactory() 
+ * @author Pavel
+ * @version 1.0
+*/
 public class TitlesPanel
 extends JPanel
 implements ActionListener {
@@ -25,6 +29,7 @@ implements ActionListener {
     private int start_angle = 0;
     private int shape;
 
+/** Конструктор получает магическое число и задает таймер для анимации */
     public TitlesPanel(int _shape) {
         this.shape = _shape;
         this.animation = new Timer(50, this);
